@@ -58,7 +58,7 @@
         var that = this, $trs = this.$header.find('tr').clone(true); //Fix: Aleksej "clone()" mit "clone(true)" ersetzt
         $trs.each(function () {
             // This causes layout problems:
-            //$(this).find('th:gt(' + (that.options.fixedNumber -1) + ')').remove(); // Fix: Aleksej "-1" hinnzugefügt. Denn immer eine Spalte Mehr geblieben ist
+            //$(this).find('th:gt(' + (that.options.fixedNumber -1) + ')').remove(); // Fix: Aleksej "-1" hinnzugefÃ¼gt. Denn immer eine Spalte Mehr geblieben ist
             $(this).find('th:gt(' + that.options.fixedNumber + ')').remove();
         });
         this.$fixedHeaderColumns.html('').append($trs); 
@@ -84,11 +84,13 @@
             $tr.attr("data-index", dataIndex);
 
             var end = that.options.fixedNumber;
+            var i = 0;
             if (rowspan > 0) {
-                --end;
+                // --end;
                 --rowspan;
+                ++i;
             }
-            for (var i = 0; i < end; i++) {
+            for (; i < end; i++) {
                 $tr.append($tds.eq(i).clone());
             }
             that.$fixedBodyColumns.append($tr);
@@ -146,7 +148,7 @@
 
     /**
     * Add: Aleksej
-    * Hook für getCaret. Aktualisieren Header bei Fixed-Columns wenn diese sortiert wurden
+    * Hook fÃ¼r getCaret. Aktualisieren Header bei Fixed-Columns wenn diese sortiert wurden
     * @method getCaret
     * @for BootstrapTable
     */
@@ -166,12 +168,12 @@
     };
 
     /**
-     * Add: Aleksej, zum berechnen von Scrollbar-Größe
+     * Add: Aleksej, zum berechnen von Scrollbar-GrÃ¶ÃŸe
      * @method calcScrollBarSize
      * @return Number
      */
     BootstrapTable.prototype.calcScrollBarSize = function () {
-        // Es ist egal, ob Höhe oder Breite
+        // Es ist egal, ob HÃ¶he oder Breite
         var tmpWidth        = 100,
             $container      = $('<div>').css({
                 width       : tmpWidth, 
